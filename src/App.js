@@ -2,11 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
+import Formulario from './components/formulario/formulario';
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <Formulario />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

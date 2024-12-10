@@ -1,0 +1,108 @@
+.form-container {
+    max-width: 50%;
+    margin: 3rem auto;
+    background-color: #F6F6F6;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  h2 {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .form-group {
+    margin-bottom: 2rem;
+  }
+  
+  label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  input,
+  select {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  input::placeholder {
+    color: #bbb;
+  }
+  
+  .btn-crear {
+    background-color: #6278F7;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 30%;
+  }
+  
+  .btn-crear:hover {
+    color: #95FFD4;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.8rem;
+    margin: .1rem 0;
+  }
+
+  .btn-container {
+    max-height: 15vh;
+    width: 100%;
+    text-align: center;
+    justify-items: center;
+  }
+  
+  .btn-toggle {
+    height: 100px;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    top: -6rem;
+    right: -25rem;
+  }
+  
+  .btn-toggle:hover {
+    transform: scale(1.05);
+  }
+
+  .title-org {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--color-primary);
+    text-align: center;
+    padding-left: 1.3rem;
+  }
+  
+  .line {
+    width: 100%;
+    height: 0.3rem;
+    background-color: var(--color-primary);
+    margin-left: 1rem;
+  }
+
+  .titulo {
+    width: 315px;
+  }
