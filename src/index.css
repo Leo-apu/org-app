@@ -1,0 +1,55 @@
+/* Tipografía */
+:root {
+  --font-title: 'Prata', serif;
+  --font-body: 'Montserrat', sans-serif;
+
+  /* Colores principales */
+  --color-primary: #6278F7;
+  --color-secondary: #95FFD4;
+  --color-neutral: #F2F2F2;
+
+  /* Colores de equipos */
+  --team-programming-bg: #D9F7E9;
+  --team-programming-highlight: #57C278;
+
+  --team-front-end-bg: #E8F8FF;
+  --team-front-end-highlight: #82CFFA;
+
+  --team-data-science-bg: #F0F8E2;
+  --team-data-science-highlight: #A6D157;
+
+  --team-devops-bg: #FDE7E8;
+  --team-devops-highlight: #E06B69;
+
+  --team-ux-ui-bg: #FAE9F5;
+  --team-ux-ui-highlight: #DB6EBF;
+
+  --team-mobile-bg: #FFF5D9;
+  --team-mobile-highlight: #FFBA05;
+
+  --team-innovation-bg: #FFEFDF;
+  --team-innovation-highlight: #FFA829;
+
+  /* Botones */
+  --button-bg: #6278F7;
+  --button-hover-bg: #395BB3;
+
+  /* Otros */
+  --card-border-radius: 8px;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
