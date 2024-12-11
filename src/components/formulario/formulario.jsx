@@ -2,19 +2,22 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./formulario.css";
 
-const Formulario = ( { equipos }) => {
+const Formulario = ( { equipos , agregarColaborador }) => {
   const [showForm, setShowForm] = useState(false);
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
 
   const onSubmit = (data) => {
     console.log("Datos enviados:", data);
+    agregarColaborador(data);
+    reset();
+    setShowForm(false);
   };
-
   const toggleForm = () => {
     setShowForm(!showForm); 
   };

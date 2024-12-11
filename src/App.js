@@ -1,11 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import Formulario from './components/formulario/formulario';
 import Equipo from './components/equipo/equipo';
+import { useEffect, useState } from "react";
 
 function App() {
+  const storedColaboradores = JSON.parse(localStorage.getItem("colaboradores")) || [];
+  const [colaboradores, setColaboradores] = useState(storedColaboradores);
+
+  useEffect(() => {
+    localStorage.setItem("colaboradores", JSON.stringify(colaboradores));
+  }, [colaboradores]);
 
   const equipos = [
     {
@@ -45,26 +51,20 @@ function App() {
     },
   ];
   
+  const agregarColaborador = (colaborador) => {
+    setColaboradores([...colaboradores, colaborador]);
+  };
+
+    // Filtrar equipos con colaboradores asociados
+    const equiposConColaboradores = equipos.filter((equipo) =>
+      colaboradores.some((colaborador) => colaborador.equipo === equipo.title)
+    );
 
   return (
     <div className="App">
       <Header />
-      <Formulario equipos={equipos.map((equipo) => equipo.title)} />
-      <Equipo equipos={equipos} />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Formulario equipos={equipos.map((equipo) => equipo.title)} agregarColaborador={agregarColaborador}  />
+      <Equipo equipos={equiposConColaboradores} colaboradores={colaboradores} />
       <Footer />
     </div>
   );

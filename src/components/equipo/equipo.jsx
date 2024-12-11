@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
 import "./equipo.css";
+import Colaborador from "../colaborador/colaborador";
 
-function Equipo( { equipos } ) {
+function Equipo( { equipos, colaboradores } ) {
     return (
         <Fragment>
             { equipos && equipos.map( (equipo ) => {
@@ -11,6 +12,8 @@ function Equipo( { equipos } ) {
                             { equipo.title } 
                         </h3>
                         <div className="colaboradores">
+                            <Colaborador colorPrimario={ equipo.highlightColor }  
+                            colaboradores={ colaboradores.filter( colaborador => colaborador.equipo === equipo.title ) }/>
                         </div>
                     </section>
                 );

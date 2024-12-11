@@ -1,8 +1,17 @@
-.footer {
-    text-align: center;
-    background-color: var(--color-primary);
+.footer{
+    width: 100%;
+    display: flex;
+    padding: 5%;
+    align-items: center;
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+    justify-content: space-between;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
 }
 
-.footer img {
-    max-width: 100%;
+.redes img{
+    padding: 0px 15px;
 }
