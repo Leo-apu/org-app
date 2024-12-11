@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./formulario.css";
 
-const Formulario = () => {
+const Formulario = ( { equipos }) => {
   const [showForm, setShowForm] = useState(false);
   const {
     register,
@@ -10,15 +10,6 @@ const Formulario = () => {
     formState: { errors },
   } = useForm();
 
-  const equipos = [
-    "Programación",
-    "Front End",
-    "Data Science",
-    "Devops",
-    "UX y Diseño",
-    "Móvil",
-    "Innovación y Gestión",
-  ];
 
   const onSubmit = (data) => {
     console.log("Datos enviados:", data);

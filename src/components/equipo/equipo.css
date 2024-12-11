@@ -1,0 +1,15 @@
+.equipo {
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.equipo h3 {
+    font-family: var(--font-title);
+    font-weight: 400;
+    color: var(--color-primary);
+    border-bottom: solid 4px var(--color-primary);
+    display: inline-block;
+    padding: 0.5rem;
+}
