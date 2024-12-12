@@ -8,7 +8,7 @@ import hexToRgba from 'hex-to-rgba';
 import {v4 as uuid} from 'uuid';
 
 function App() {
-  const storedColaboradores = JSON.parse(localStorage.getItem("colaboradores")) && [{
+  const storedColaboradores = JSON.parse(localStorage.getItem("colaboradores")) || [{
     id: uuid(),
     equipo: "Front End",
     foto: "https://github.com/harlandlohora.png",
@@ -48,7 +48,7 @@ function App() {
     puesto: "Dev FullStack",
     fav: false
   }];
-  const storedEquipos = JSON.parse(localStorage.getItem("equipos")) && [
+  const storedEquipos = JSON.parse(localStorage.getItem("equipos")) || [
     {
       id: uuid(),
       title: "Programación",
