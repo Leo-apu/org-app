@@ -1,12 +1,14 @@
 import React, { Fragment } from 'react';
 import './colaborador.css';
+import { AiFillCloseCircle } from 'react-icons/ai';
 
 
-function Colaborador( { colorPrimario, colaboradores} ) {
+function Colaborador( { colorPrimario, colaboradores , eliminarColaborador} ) {
     return (
         <Fragment>
             {colaboradores.length > 0  && colaboradores.map((colaborador, index) => (
             <div key={index} className="colaborador">
+                <AiFillCloseCircle className="eliminar" onClick={() => eliminarColaborador(colaborador.id)} />
                 <div className="encabezado" style={{ backgroundColor: colorPrimario }} >
                 <img src={colaborador.foto} alt={colaborador.nombre} />
                 </div>
