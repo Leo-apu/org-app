@@ -8,42 +8,47 @@ import hexToRgba from 'hex-to-rgba';
 import {v4 as uuid} from 'uuid';
 
 function App() {
-  const storedColaboradores = JSON.parse(localStorage.getItem("colaboradores")) || [{
+  const storedColaboradores = JSON.parse(localStorage.getItem("colaboradores")) && [{
     id: uuid(),
     equipo: "Front End",
     foto: "https://github.com/harlandlohora.png",
     nombre: "Harland Lohora",
-    puesto: "Instructor"
+    puesto: "Instructor",
+    fav: true
   },
   {
     id: uuid(),
     equipo: "Programación",
     foto: "https://github.com/JeanmarieAluraLatam.png",
     nombre: "Genesys Rondón",
-    puesto: "Desarrolladora de software e instructora"
+    puesto: "Desarrolladora de software e instructora",
+    fav: true
   },
   {
     id: uuid(),
     equipo: "UX y Diseño",
     foto: "https://github.com/JeanmarieAluraLatam.png",
     nombre: "Jeanmarie Quijada",
-    puesto: "Instructora en Alura Latam"
+    puesto: "Instructora en Alura Latam",
+    fav: false
   },
   {
     id: uuid(),
     equipo: "Programación",
     foto: "https://github.com/christianpva.png",
     nombre: "Christian Velasco",
-    puesto: "Head de Alura e Instructor"
+    puesto: "Head de Alura e Instructor",
+    fav: true
   },
   {
     id: uuid(),
     equipo: "Innovación y Gestión",
     foto: "https://github.com/JoseDarioGonzalezCha.png",
     nombre: "Jose Gonzalez",
-    puesto: "Dev FullStack"
+    puesto: "Dev FullStack",
+    fav: false
   }];
-  const storedEquipos = JSON.parse(localStorage.getItem("equipos")) || [
+  const storedEquipos = JSON.parse(localStorage.getItem("equipos")) && [
     {
       id: uuid(),
       title: "Programación",
@@ -116,6 +121,18 @@ function App() {
       setColaboradores(colaboradoresActualizados);
     };
 
+    const like = (id) => {
+      console.log("like", id)
+      const colaboradoresActualizados = colaboradores.map((colaborador) => {
+        if (colaborador.id === id) {
+          colaborador.fav = !colaborador.fav
+        }
+        return colaborador
+      })
+  
+      setColaboradores(colaboradoresActualizados);
+    }
+
     const actualizarColor = (color, id) => {
       const equiposActualizados = equipos.map((equipo) => {
         if (equipo.id === id) {
@@ -132,7 +149,7 @@ function App() {
       <Header />
       <Formulario equipos={equipos.map((equipo) => equipo.title)} agregarColaborador={agregarColaborador}  agregarEquipo={agregarEquipo} />
       <Equipo equipos={equiposConColaboradores} colaboradores={colaboradores} eliminarColaborador={eliminarColaborador} 
-      actualizarColor={actualizarColor} />
+      actualizarColor={actualizarColor} like={like} />
       <Footer />
     </div>
   );

@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import "./equipo.css";
 import Colaborador from "../colaboradores/colaborador";
 
-function Equipo( { equipos, colaboradores , eliminarColaborador , actualizarColor } ) {
+function Equipo( { equipos, colaboradores , eliminarColaborador , actualizarColor , like } ) {
 
     function obtenerValorCSS(variableCSS) {
         if (variableCSS.startsWith("var(") && variableCSS.endsWith(")")) {
@@ -33,7 +33,7 @@ function Equipo( { equipos, colaboradores , eliminarColaborador , actualizarColo
                         <div className="colaboradores">
                             <Colaborador colorPrimario={ equipo.highlightColor }  
                             colaboradores={ colaboradores.filter( colaborador => colaborador.equipo === equipo.title ) }
-                            eliminarColaborador={ eliminarColaborador }/>
+                            eliminarColaborador={ eliminarColaborador } like={ like } />
                         </div>
                     </section>
                 );
