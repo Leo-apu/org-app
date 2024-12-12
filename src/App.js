@@ -99,7 +99,11 @@ function App() {
   }, [equipos]);
   
   const agregarColaborador = (colaborador) => {
-    setColaboradores([...colaboradores, colaborador]);
+    setColaboradores([...colaboradores, { ...colaborador , id: uuid()}]);
+  };
+
+  const agregarEquipo = (equipo) => {
+    actualizarEquipos([...equipos, { ...equipo , id: uuid(), bgColor : hexToRgba(equipo.highlightColor, 0.4) }]);
   };
 
     // Filtrar equipos con colaboradores asociados
@@ -122,11 +126,11 @@ function App() {
       });
       actualizarEquipos(equiposActualizados);
     };
-    console.log(equipos);
+
   return (
     <div className="App">
       <Header />
-      <Formulario equipos={equipos.map((equipo) => equipo.title)} agregarColaborador={agregarColaborador}  />
+      <Formulario equipos={equipos.map((equipo) => equipo.title)} agregarColaborador={agregarColaborador}  agregarEquipo={agregarEquipo} />
       <Equipo equipos={equiposConColaboradores} colaboradores={colaboradores} eliminarColaborador={eliminarColaborador} 
       actualizarColor={actualizarColor} />
       <Footer />

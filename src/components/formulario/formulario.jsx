@@ -2,22 +2,35 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./formulario.css";
 
-const Formulario = ( { equipos , agregarColaborador }) => {
+const Formulario = ( { equipos , agregarColaborador , agregarEquipo }) => {
   const [showForm, setShowForm] = useState(false);
   const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
+    register : registerColaborador,
+    handleSubmit : handleSubmitColaborador,
+    reset : resetColaborador,
+    formState: { errors : errorsColaborador },
   } = useForm();
 
+  const {
+    register : registerEquipo,
+    handleSubmit : handleSubmitEquipo,
+    reset : resetEquipo,
+    formState: { errors : errorsEquipo },
+  } = useForm();
 
   const onSubmit = (data) => {
     console.log("Datos enviados:", data);
     agregarColaborador(data);
-    reset();
+    resetColaborador();
     setShowForm(false);
   };
+
+  const onSubmitEquipo = (data) => {
+    console.log("Datos enviados:", data);
+    agregarEquipo(data);
+    resetEquipo();
+    setShowForm(false);
+  }
   const toggleForm = () => {
     setShowForm(!showForm); 
   };
@@ -26,7 +39,7 @@ const Formulario = ( { equipos , agregarColaborador }) => {
     <div>
       {showForm && (
         <div className="form-container">
-          <form onSubmit={handleSubmit(onSubmit)} className="form">
+          <form onSubmit={handleSubmitColaborador (onSubmit)} className="form">
             <h2>Rellena el formulario para crear el colaborador.</h2>
 
             <div className="form-group">
@@ -35,12 +48,12 @@ const Formulario = ( { equipos , agregarColaborador }) => {
                 type="text"
                 id="nombre"
                 placeholder="Ingresar nombre"
-                {...register("nombre", {
+                {...registerColaborador("nombre", {
                   required: "El nombre es obligatorio",
                 })}
               />
-              {errors.nombre && (
-                <p className="error">{errors.nombre.message}</p>
+              {errorsColaborador.nombre && (
+                <p className="error">{errorsColaborador.nombre.message}</p>
               )}
             </div>
 
@@ -50,12 +63,12 @@ const Formulario = ( { equipos , agregarColaborador }) => {
                 type="text"
                 id="puesto"
                 placeholder="Ingresar puesto"
-                {...register("puesto", {
+                {...registerColaborador("puesto", {
                   required: "El puesto es obligatorio",
                 })}
               />
-              {errors.puesto && (
-                <p className="error">{errors.puesto.message}</p>
+              {errorsColaborador.puesto && (
+                <p className="error">{errorsColaborador.puesto.message}</p>
               )}
             </div>
 
@@ -65,7 +78,7 @@ const Formulario = ( { equipos , agregarColaborador }) => {
                 type="text"
                 id="foto"
                 placeholder="Ingresar enlace de foto"
-                {...register("foto", {
+                {...registerColaborador("foto", {
                   required: "El enlace de la foto es obligatorio",
                   pattern: {
                     value: /^(http|https):\/\/[^\s$.?#].[^\s]*$/,
@@ -73,14 +86,14 @@ const Formulario = ( { equipos , agregarColaborador }) => {
                   },
                 })}
               />
-              {errors.foto && <p className="error">{errors.foto.message}</p>}
+              {errorsColaborador.foto && <p className="error">{errorsColaborador.foto.message}</p>}
             </div>
 
             <div className="form-group">
               <label htmlFor="equipo">Equipo</label>
               <select
                 id="equipo"
-                {...register("equipo", {
+                {...registerColaborador("equipo", {
                   required: "Seleccionar un equipo es obligatorio",
                 })}
               >
@@ -91,13 +104,51 @@ const Formulario = ( { equipos , agregarColaborador }) => {
                   </option>
                 ))}
               </select>
-              {errors.equipo && (
-                <p className="error">{errors.equipo.message}</p>
+              {errorsColaborador.equipo && (
+                <p className="error">{errorsColaborador.equipo.message}</p>
               )}
             </div>
 
             <button type="submit" className="btn-crear">
               Crear
+            </button>
+          </form>
+
+          <form onSubmit={handleSubmitEquipo(onSubmitEquipo)} className="form">
+            <h2>Rellena el formulario para crear un equipo.</h2>
+
+            <div className="form-group">
+              <label htmlFor="title">titulo</label>
+              <input
+                type="text"
+                id="title"
+                placeholder="Ingresar titulo"
+                {...registerEquipo("title", {
+                  required: "El titulo es obligatorio",
+                })}
+              />
+              {errorsEquipo.title && (
+                <p className="error">{errorsEquipo.title.message}</p>
+              )}
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="highlightColor">Color de fondo</label>
+              <input className="color"
+                type="color"
+                id="highlightColor"
+                placeholder="Ingresar color de fondo"
+                {...registerEquipo("highlightColor", {
+                  required: "El color de fondo es obligatorio",
+                })}
+              />
+              {errorsEquipo.bgColor && (
+                <p className="error">{errorsEquipo.bgColor.message}</p>
+              )}
+            </div>
+
+            <button type="submit" className="btn-crear">
+              Registrar Equipo
             </button>
           </form>
         </div>
